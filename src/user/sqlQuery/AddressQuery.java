@@ -83,5 +83,25 @@ public class AddressQuery {
         }
 
     }
+    public static void updateAddressIDByID(int addressId) {
+
+        try (Connection conn = DriverManager
+                .getConnection(Utility.DB_URL);
+             PreparedStatement stmt = conn.prepareStatement(UPDATE_QUERY);
+        ) {
+            stmt.setInt(1, addressId);
+            int rowsAffected = stmt.executeUpdate();
+
+            if (rowsAffected > 0) {
+                System.out.println("Record with ID " + addressId + " updated successfully.");
+            } else {
+                System.out.println("No record found with ID " + addressId + ". Nothing updated.");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
 
 }
