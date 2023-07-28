@@ -1,4 +1,4 @@
-package com.dtos;
+package user.dtos;
 
 public class ContactAddress {
     private int contactId;
